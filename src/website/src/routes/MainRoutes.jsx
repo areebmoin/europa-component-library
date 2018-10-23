@@ -7,12 +7,14 @@ import Example from './Example';
 import PageNotFound from './404';
 
 const ECRoutes = Loadable({
-  loader: () => import('./Ec'),
+  loader: () =>
+    import(/* webpackChunkName: "ec", webpackPrefetch: true */ './Ec'),
   loading: () => null,
 });
 
 const EURoutes = Loadable({
-  loader: () => import('./Eu'),
+  loader: () =>
+    import(/* webpackChunkName: "eu", webpackPrefetch: true */ './Eu'),
   loading: () => null,
 });
 

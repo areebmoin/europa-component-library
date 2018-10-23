@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { Route, Redirect, Switch } from 'react-router-dom';
+import Loadable from 'react-loadable';
 
 import Header from './Header';
 import ScrollToTopOnMount from '../ScrollToTopOnMount/ScrollToTopOnMount';
@@ -28,7 +29,14 @@ const DocPage = ({ component }) => (
                 exact
                 strict
                 path={`${component.url}/${tab.url}/`}
-                component={tab.component}
+                component={
+                  tab.loadableComponent
+                    ? Loadable({
+                        loader: tab.loadableComponent,
+                        loading: () => null,
+                      })
+                    : tab.component
+                }
                 key={tab.url}
               />
             ))}

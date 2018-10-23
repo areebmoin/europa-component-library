@@ -7,6 +7,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const CompressionPlugin = require('compression-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 const postcssFlexbugFixes = require('postcss-flexbugs-fixes');
 const selectorPrefixer = require('postcss-prefix-selector');
@@ -284,6 +285,8 @@ module.exports = {
     }),
     // If you want to invetigate the bundle size, uncomment the following line
     // new (require('webpack-bundle-analyzer')).BundleAnalyzerPlugin(), // eslint-disable-line
+    // Compress assets
+    new CompressionPlugin(),
   ],
   performance: {
     hints: 'warning',

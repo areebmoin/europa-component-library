@@ -18,6 +18,8 @@ import PageNotFound from './404';
 import SimplePage from '../components/SimplePage/SimplePage';
 import DocPage from '../components/DocPage/DocPage';
 
+import files from './preval/ec';
+
 const ecPages = require.context('../pages/ec', true, /config\.js$/);
 const ecSpecs = require.context(
   '../../../systems/ec/specs',
@@ -50,6 +52,8 @@ const sortedPages = sortPages(pages);
 class ECRoutes extends Component {
   constructor(props) {
     super(props);
+
+    console.log('files', files);
 
     this.state = {
       sidebarOpen:
